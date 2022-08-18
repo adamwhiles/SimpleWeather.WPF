@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWeather.WPF", "SimpleWeather.WPF\SimpleWeather.WPF.csproj", "{DF0FAC79-7269-48DE-A068-FA07E4E7D59A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF0FAC79-7269-48DE-A068-FA07E4E7D59A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF0FAC79-7269-48DE-A068-FA07E4E7D59A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF0FAC79-7269-48DE-A068-FA07E4E7D59A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF0FAC79-7269-48DE-A068-FA07E4E7D59A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1CC0E8C1-E805-4107-81CB-469806A9D274}
+	EndGlobalSection
+EndGlobal
