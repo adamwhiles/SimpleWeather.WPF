@@ -15,6 +15,7 @@ namespace SimpleWeather.WPF.ViewModel.Helpers
         public const string BASE_URL = "http://dataservice.accuweather.com/";
         public const string AUTOCOMPLETE_ENDPOINT = "locations/v1/cities/autocomplete?apikey={0}&q={1}";
         public const string CURRENT_CONDITIONS_ENDPOINT = "currentconditions/v1/{0}?apikey={1}";
+        public const string FIVE_DAY_FORECAST_ENDPOINT = "forecasts/v1/daily/5day/{0}?apikey={1}";
         private static string API_KEY = ConfigurationManager.AppSettings.Get("accuWeatherApiKey");
 
         public static async Task<List<City>> GetCities(string query)
@@ -46,6 +47,21 @@ namespace SimpleWeather.WPF.ViewModel.Helpers
             }
 
             return currentConditions;
+        }
+
+        public static async Task<Forecast> GetForecast(string cityKey)
+        {
+            Forecast forecast = new Forecast();
+            string url = BASE_URL + string.Format(FIVE_DAY_FORECAST_ENDPOINT, cityKey, API_KEY);
+            using (HttpClient client = new HttpClient())
+            {
+                var response = await client.GetAsync(url);
+                string json = await response.Content.ReadAsStringAsync();
+
+                forecast = JsonConvert.DeserializeObject<Forecast>(json);
+            }
+
+            return forecast;
         }
     }
 }
