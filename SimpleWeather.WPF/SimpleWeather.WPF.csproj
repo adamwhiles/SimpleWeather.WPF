@@ -67,6 +67,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\ValueConverters\BoolToRainConverter.cs" />
+    <Compile Include="ViewModel\ValueConverters\DateToWeekdayConverter.cs" />
     <Compile Include="ViewModel\WeatherWindowViewModel.cs" />
     <Compile Include="View\WeatherWindow.xaml.cs">
       <DependentUpon>WeatherWindow.xaml</DependentUpon>

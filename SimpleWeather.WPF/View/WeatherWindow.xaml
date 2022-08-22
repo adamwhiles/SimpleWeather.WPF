@@ -11,6 +11,7 @@
     <Window.Resources>
         <vm:WeatherWindowViewModel x:Key="vm" />
         <converters:BoolToRainConverter x:Key="boolToRain" />
+        <converters:DateToWeekdayConverter x:Key="dateToWeekday" />
     </Window.Resources>
     
     <Grid DataContext="{StaticResource vm}">
@@ -40,17 +41,43 @@
                 </ListView.ItemTemplate>
             </ListView>
             <ListView ItemsSource="{Binding Forecasts}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <TextBlock>
+                        <Border BorderBrush="LightBlue" BorderThickness="0 0 0 1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="{Binding Date, Converter={StaticResource dateToWeekday}}" FontSize="16" FontWeight="DemiBold" />
+                                <TextBlock Text="High" FontSize="12" FontWeight="DemiBold" Grid.Column="1" Padding="5"/>
+                                <TextBlock FontSize="14" FontWeight="DemiBold" Grid.Column="2" Padding="5">
                                 <TextBlock.Text>
                                     <MultiBinding StringFormat="{}{0}">
                                         <Binding Path="Temperature.Maximum.Value" />
                                     </MultiBinding>
                                 </TextBlock.Text>
                             </TextBlock>
-                        </Grid>
+                                <TextBlock Text="Low" FontSize="12" FontWeight="DemiBold" Grid.Column="1" Grid.Row="1" Padding="5"/>
+                                <TextBlock FontSize="14" FontWeight="DemiBold" Grid.Column="2" Grid.Row="1" Padding="5">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}">
+                                            <Binding Path="Temperature.Minimum.Value" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
